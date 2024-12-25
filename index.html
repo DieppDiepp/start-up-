@@ -72,6 +72,12 @@
             margin-top: 10px;
             border-radius: 5px;
         }
+        .news-item {
+            margin-bottom: 15px;
+        }
+        .news-item h3 {
+            font-size: 1.2rem;
+        }
         .footer {
             background-color: #006400;
             color: white;
@@ -133,48 +139,11 @@
         </div>
     </section>
 
-    <!-- Product Demo Section -->
-    <section id="product-demo" class="section">
-        <h2 class="section-title">Thông tin cây trồng</h2>
-        <div class="section-content">
-            <form>
-                <div class="mb-3">
-                    <label for="plantType" class="form-label">Loại cây trồng</label>
-                    <select id="plantType" class="form-select">
-                        <option selected>Chọn loại cây trồng</option>
-                        <option value="1">Cà phê</option>
-                        <option value="2">Lúa</option>
-                        <option value="3">Sầu riêng</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="plantYear" class="form-label">Năm trồng</label>
-                    <select id="plantYear" class="form-select">
-                        <option selected>Chọn năm trồng</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="location" class="form-label">Địa điểm</label>
-                    <select id="location" class="form-select">
-                        <option selected>Chọn địa điểm</option>
-                        <option value="highlands">Tây Nguyên</option>
-                        <option value="north">Miền Bắc</option>
-                        <option value="south">Miền Nam</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="area" class="form-label">Diện tích canh tác</label>
-                    <input type="text" id="area" class="form-control" placeholder="Nhập diện tích (ha)">
-                </div>
-                <div class="mb-3">
-                    <label for="numberOfPlants" class="form-label">Số cây</label>
-                    <input type="text" id="numberOfPlants" class="form-control" placeholder="Nhập số lượng cây">
-                </div>
-                <button type="submit" class="btn btn-success w-100">Lưu thông tin</button>
-            </form>
+    <!-- News Section -->
+    <section id="news" class="section">
+        <h2 class="section-title">Tin tức</h2>
+        <div id="news-container" class="section-content">
+            <p>Đang tải tin tức...</p>
         </div>
     </section>
 
@@ -188,6 +157,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init();
+
+        // Fetch news from a mock RSS feed (replace this with actual feed or API)
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://nongsanviet.nongnghiep.vn/rss')
+            .then(response => response.json())
+            .then(data => {
+                const newsContainer = document.getElementById('news-container');
+                let newsHtml = '';
+
+                data.items.slice(0, 5).forEach(item => {
+                    newsHtml += `
+                        <div class="news-item">
+                            <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                });
+
+                newsContainer.innerHTML = newsHtml;
+            })
+            .catch(error => {
+                document.getElementById('news-container').innerHTML = '<p>Không thể tải tin tức vào lúc này.</p>';
+                console.error('Error fetching news:', error);
+            });
     </script>
 </body>
 </html>
