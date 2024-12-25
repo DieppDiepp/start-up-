@@ -25,27 +25,44 @@
         header p {
             margin: 10px 0 20px;
         }
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        .carousel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            max-width: 1200px;
+            max-width: 800px;
             margin: auto;
         }
-        .image-item {
-            text-align: center;
-        }
-        .image-item img {
-            width: 80%;
+        .carousel img {
+            width: 100%;
             height: auto;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
         }
-        .image-item p {
+        .carousel p {
             font-size: 1rem;
             color: #333;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin: 10px auto;
+        }
+        .carousel-controls button {
+            background-color: #006400;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .carousel-controls button:hover {
+            background-color: #004d00;
         }
         footer {
             text-align: center;
@@ -61,43 +78,56 @@
         <p>Giao diện Demo Ứng dụng</p>
     </header>
 
-    <div class="image-gallery">
-        <div class="image-item">
-            <img src="assets/images/1.png" alt="Giao diện Đăng nhập">
-            <p>Giao diện Đăng nhập</p>
-        </div>
-        <div class="image-item">
-            <img src="assets/images/2.png" alt="Giao diện chọn thông tin cây trồng">
-            <p>Giao diện chọn thông tin cây trồng</p>
-        </div>
-        <div class="image-item">
-            <img src="assets/images/[3] Trang chủ.png" alt="Giao diện Trang chủ">
-            <p>Trang chủ cung cấp tổng quan và các chức năng chính của ứng dụng</p>
-        </div>
-        <div class="image-item">
-            <img src="assets/images/[3] Trang chủ (2).png" alt="Giao diện Trang chủ 2">
-            <p>Trang chủ - Giao diện thay thế với cách bố trí khác</p>
-        </div>
-        <div class="image-item">
-            <img src="assets/images/[1] Thị trường.png" alt="Giao diện Thị trường">
-            <p>Thị trường: Nơi bạn có thể liên tục cập nhật giá cả nông sản</p>
-        </div>
-        <div class="image-item">
-            <img src="assets/images/[2] Tin tức.png" alt="Giao diện Tin tức">
-            <p>Tin tức: Cập nhật thông tin mới nhất về nông sản và thị trường</p>
-        </div>
-        <div class="image-item">
-            <img src="assets/images/[4] Chuyên gia.png" alt="Giao diện Chuyên gia">
-            <p>Chuyên gia: Kết nối với các chuyên gia trong ngành</p>
-        </div>
-        <div class="image-item">
-            <img src="assets/images/[5] Diễn đàn.png" alt="Giao diện Diễn đàn">
-            <p>Diễn đàn: Nơi chia sẻ kinh nghiệm và trao đổi thông tin</p>
+    <div class="carousel">
+        <img id="carousel-image" src="assets/images/1.png" alt="Giao diện Đăng nhập">
+        <p id="carousel-caption">Giao diện Đăng nhập</p>
+
+        <div class="carousel-controls">
+            <button id="prev-button">&lt; Trước</button>
+            <button id="next-button">Tiếp &gt;</button>
         </div>
     </div>
 
     <footer>
         <p>© 2024 Nông Gia. All rights reserved.</p>
     </footer>
+
+    <script>
+        const images = [
+            { src: "assets/images/1.png", caption: "Giao diện Đăng nhập" },
+            { src: "assets/images/2.png", caption: "Giao diện chọn thông tin cây trồng" },
+            { src: "assets/images/[3] Trang chủ.png", caption: "Trang chủ cung cấp tổng quan và các chức năng chính của ứng dụng" },
+            { src: "assets/images/[3] Trang chủ (2).png", caption: "Trang chủ - Giao diện thay thế với cách bố trí khác" },
+            { src: "assets/images/[1] Thị trường.png", caption: "Thị trường: Nơi bạn có thể liên tục cập nhật giá cả nông sản" },
+            { src: "assets/images/[2] Tin tức.png", caption: "Tin tức: Cập nhật thông tin mới nhất về nông sản và thị trường" },
+            { src: "assets/images/[4] Chuyên gia.png", caption: "Chuyên gia: Kết nối với các chuyên gia trong ngành" },
+            { src: "assets/images/[5] Diễn đàn.png", caption: "Diễn đàn: Nơi chia sẻ kinh nghiệm và trao đổi thông tin" }
+        ];
+
+        let currentIndex = 0;
+
+        const imageElement = document.getElementById('carousel-image');
+        const captionElement = document.getElementById('carousel-caption');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+
+        function updateCarousel() {
+            imageElement.src = images[currentIndex].src;
+            imageElement.alt = images[currentIndex].caption;
+            captionElement.textContent = images[currentIndex].caption;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        });
+
+        updateCarousel();
+    </script>
 </body>
 </html>
