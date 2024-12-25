@@ -72,11 +72,48 @@
             margin-top: 10px;
             border-radius: 5px;
         }
-        .news-item {
+        .news-home-item {
             margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            display: flex;
+            gap: 15px;
         }
-        .news-item h3 {
+        .news-home-item img {
+            width: 300px;
+            height: 170px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        .news-info h3 {
             font-size: 1.2rem;
+            margin: 0;
+        }
+        .news-info p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .form-section {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .form-section h2 {
+            text-align: center;
+            color: green;
+            margin-bottom: 20px;
+        }
+        .form-section label {
+            font-weight: bold;
+        }
+        .form-section button {
+            width: 100%;
         }
         .footer {
             background-color: #006400;
@@ -143,8 +180,69 @@
     <section id="news" class="section">
         <h2 class="section-title">Tin tức</h2>
         <div id="news-container" class="section-content">
-            <p>Đang tải tin tức...</p>
+            <div class="news-home-item">
+                <a href="https://nongsanviet.nongnghiep.vn/nha-may-bien-vo-trai-cay-thanh-phan-bon-huu-co-dau-tien-o-tien-giang-d410058.html" class="thumb expthumb" title="Nhà máy biến vỏ trái cây thành phân bón hữu cơ đầu tiên ở Tiền Giang">
+                    <img src="https://t.ex-cdn.com/nongnghiep.vn/320w/files/benlc/2024/12/10/5756-ee5f7ed29b28207679392-nongnghiep-231648.jpg" alt="Nhà máy biến vỏ trái cây thành phân bón hữu cơ đầu tiên ở Tiền Giang">
+                </a>
+                <div class="news-info">
+                    <h3 class="main-title main-title-lager">
+                        <a href="https://nongsanviet.nongnghiep.vn/nha-may-bien-vo-trai-cay-thanh-phan-bon-huu-co-dau-tien-o-tien-giang-d410058.html" title="Nhà máy biến vỏ trái cây thành phân bón hữu cơ đầu tiên ở Tiền Giang">
+                            Nhà máy biến vỏ trái cây thành phân bón hữu cơ đầu tiên ở Tiền Giang
+                        </a>
+                    </h3>
+                    <div class="cate_info">
+                        <a href="https://nongsanviet.nongnghiep.vn/organic/">Organic</a>
+                    </div>
+                    <p class="main-intro main-intro-large">
+                        <span class="location_intro">TIỀN GIANG </span>
+                        Do đang vận hành thử nghiệm nên nhà máy chỉ hoạt động khoảng 60% công suất, thu hồi từ 30 - 50% (30 tấn) nguyên liệu thô mỗi ngày.
+                    </p>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- Product Information Section -->
+    <section id="product-info" class="form-section">
+        <h2>Thông tin cây trồng</h2>
+        <form>
+            <div class="mb-3">
+                <label for="plantType" class="form-label">Loại cây trồng</label>
+                <select id="plantType" class="form-select">
+                    <option selected>Chọn loại cây trồng</option>
+                    <option value="1">Cà phê</option>
+                    <option value="2">Lúa</option>
+                    <option value="3">Sầu riêng</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="plantYear" class="form-label">Năm trồng</label>
+                <select id="plantYear" class="form-select">
+                    <option selected>Chọn năm trồng</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Địa điểm</label>
+                <select id="location" class="form-select">
+                    <option selected>Chọn địa điểm</option>
+                    <option value="highlands">Tây Nguyên</option>
+                    <option value="north">Miền Bắc</option>
+                    <option value="south">Miền Nam</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="area" class="form-label">Diện tích canh tác</label>
+                <input type="text" id="area" class="form-control" placeholder="Nhập diện tích (ha)">
+            </div>
+            <div class="mb-3">
+                <label for="numberOfPlants" class="form-label">Số cây</label>
+                <input type="text" id="numberOfPlants" class="form-control" placeholder="Nhập số lượng cây">
+            </div>
+            <button type="submit" class="btn btn-success">Lưu thông tin</button>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -152,34 +250,5 @@
         <p>© 2024 Nông Gia. All rights reserved.</p>
         <p><a href="#">Chính sách bảo mật</a> | <a href="#">Điều khoản sử dụng</a></p>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init();
-
-        // Fetch news from a mock RSS feed (replace this with actual feed or API)
-        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://nongsanviet.nongnghiep.vn/rss')
-            .then(response => response.json())
-            .then(data => {
-                const newsContainer = document.getElementById('news-container');
-                let newsHtml = '';
-
-                data.items.slice(0, 5).forEach(item => {
-                    newsHtml += `
-                        <div class="news-item">
-                            <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-                            <p>${item.description}</p>
-                        </div>
-                    `;
-                });
-
-                newsContainer.innerHTML = newsHtml;
-            })
-            .catch(error => {
-                document.getElementById('news-container').innerHTML = '<p>Không thể tải tin tức vào lúc này.</p>';
-                console.error('Error fetching news:', error);
-            });
-    </script>
 </body>
 </html>
