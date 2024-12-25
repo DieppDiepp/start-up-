@@ -8,8 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #e6f7e6;
             margin: 0;
             padding: 0;
@@ -20,12 +22,14 @@
         nav {
             background-color: #006400;
             padding: 10px 20px;
+            display: flex;
+            justify-content: space-around;
         }
         nav a {
             color: white;
-            margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1rem;
         }
         nav a:hover {
             text-decoration: underline;
@@ -48,26 +52,25 @@
         header p {
             font-size: 1.2rem;
         }
-        .intro {
+        .intro, .section {
             margin: 20px auto;
             padding: 20px;
             max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .intro h2 {
-            font-size: 1.5rem;
-            color: green;
-        }
-        .section {
-            padding: 50px 20px;
-        }
-        .section-title {
+        .intro h2, .section-title {
             font-size: 1.8rem;
             color: green;
             margin-bottom: 20px;
             text-align: center;
+        }
+        .section-content {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
         }
         .footer {
             background-color: #006400;
@@ -100,7 +103,7 @@
         <img src="assets/images/logo.png" alt="Nông Gia Logo">
         <h1>Nông Gia</h1>
         <p>Người bạn đồng hành tin cậy của nhà nông</p>
-        <a href="second-page.html" class="btn-link">Tìm hiểu thêm</a>
+        <a href="second-page.html" class="btn btn-primary">Tìm hiểu thêm</a>
     </header>
 
     <!-- Introduction Section -->
@@ -113,44 +116,66 @@
     <!-- About Section -->
     <section id="about" class="section">
         <h2 class="section-title">Về chúng tôi</h2>
-        <p>Nông Gia là nền tảng quản lý cây trồng thông minh, giúp nông dân tiết kiệm thời gian, tăng năng suất và bảo vệ môi trường. Chúng tôi cam kết mang lại những giải pháp tốt nhất cho cộng đồng nhà nông.</p>
+        <div class="section-content">
+            <p>Nông Gia là nền tảng quản lý cây trồng thông minh, giúp nông dân tiết kiệm thời gian, tăng năng suất và bảo vệ môi trường. Chúng tôi cam kết mang lại những giải pháp tốt nhất cho cộng đồng nhà nông.</p>
+        </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="section">
         <h2 class="section-title">Dịch vụ</h2>
-        <ul>
-            <li>Theo dõi tình trạng cây trồng</li>
-            <li>Nhận khuyến nghị cá nhân hóa</li>
-            <li>Cập nhật thông tin thị trường nông sản</li>
-        </ul>
+        <div class="section-content">
+            <ul>
+                <li>Theo dõi tình trạng cây trồng</li>
+                <li>Nhận khuyến nghị cá nhân hóa</li>
+                <li>Cập nhật thông tin thị trường nông sản</li>
+            </ul>
+        </div>
     </section>
 
-    <!-- Market Section -->
-    <section id="market" class="section">
-        <h2 class="section-title">Thị trường</h2>
-        <p>Giá cà phê hôm nay: <strong>123,100 đ/kg</strong></p>
-        <p>Xu hướng thị trường: Tăng trưởng ổn định</p>
-    </section>
-
-    <!-- News Section -->
-    <section id="news" class="section">
-        <h2 class="section-title">Tin tức</h2>
-        <article>
-            <h3>Xuất khẩu cà phê lần đầu vượt 5 tỷ USD</h3>
-            <p>Ngày 12/12/2024</p>
-        </article>
-        <article>
-            <h3>"Mô vàng xanh" đang dần lộ diện ở Gia Lai</h3>
-            <p>Ngày 14/12/2024</p>
-        </article>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h2 class="section-title">Liên hệ</h2>
-        <p>Email: support@nongsan.com</p>
-        <p>Số điện thoại: 0123 456 789</p>
+    <!-- Product Demo Section -->
+    <section id="product-demo" class="section">
+        <h2 class="section-title">Thông tin cây trồng</h2>
+        <div class="section-content">
+            <form>
+                <div class="mb-3">
+                    <label for="plantType" class="form-label">Loại cây trồng</label>
+                    <select id="plantType" class="form-select">
+                        <option selected>Chọn loại cây trồng</option>
+                        <option value="1">Cà phê</option>
+                        <option value="2">Lúa</option>
+                        <option value="3">Sầu riêng</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="plantYear" class="form-label">Năm trồng</label>
+                    <select id="plantYear" class="form-select">
+                        <option selected>Chọn năm trồng</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Địa điểm</label>
+                    <select id="location" class="form-select">
+                        <option selected>Chọn địa điểm</option>
+                        <option value="highlands">Tây Nguyên</option>
+                        <option value="north">Miền Bắc</option>
+                        <option value="south">Miền Nam</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="area" class="form-label">Diện tích canh tác</label>
+                    <input type="text" id="area" class="form-control" placeholder="Nhập diện tích (ha)">
+                </div>
+                <div class="mb-3">
+                    <label for="numberOfPlants" class="form-label">Số cây</label>
+                    <input type="text" id="numberOfPlants" class="form-control" placeholder="Nhập số lượng cây">
+                </div>
+                <button type="submit" class="btn btn-success w-100">Lưu thông tin</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
