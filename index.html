@@ -106,6 +106,12 @@
     </style>
 </head>
 <body>
+    <!-- Thêm nhạc tự động -->
+    <audio autoplay loop>
+        <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ thẻ âm thanh.
+    </audio>
+
     <header>
         <h1>Nông Gia</h1>
         <p>Chăm sóc cây trồng thông minh - Hiệu quả - Bền vững</p>
@@ -113,6 +119,7 @@
         <a href="second-page.html" class="btn-secondary">Tìm hiểu thêm về app</a>
     </header>
 
+    <!-- Nội dung website vẫn giữ nguyên -->
     <nav>
         <a href="#about">Về chúng tôi</a>
         <a href="#services">Dịch vụ</a>
@@ -144,48 +151,6 @@
                 <p>Luôn cập nhật giá cả nông sản và tin tức mới nhất.</p>
             </div>
         </div>
-    </section>
-
-    <section id="product-info" class="section">
-        <h2 class="section-title">Thông tin cây trồng</h2>
-        <form>
-            <div class="mb-3">
-                <label for="plantType" class="form-label">Loại cây trồng</label>
-                <select id="plantType" class="form-select">
-                    <option selected>Chọn loại cây trồng</option>
-                    <option value="1">Cà phê</option>
-                    <option value="2">Lúa</option>
-                    <option value="3">Sầu riêng</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="plantYear" class="form-label">Năm trồng</label>
-                <select id="plantYear" class="form-select">
-                    <option selected>Chọn năm trồng</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="location" class="form-label">Địa điểm</label>
-                <select id="location" class="form-select">
-                    <option selected>Chọn địa điểm</option>
-                    <option value="highlands">Tây Nguyên</option>
-                    <option value="north">Miền Bắc</option>
-                    <option value="south">Miền Nam</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="area" class="form-label">Diện tích canh tác</label>
-                <input type="text" id="area" class="form-control" placeholder="Nhập diện tích (ha)">
-            </div>
-            <div class="mb-3">
-                <label for="numberOfPlants" class="form-label">Số cây</label>
-                <input type="text" id="numberOfPlants" class="form-control" placeholder="Nhập số lượng cây">
-            </div>
-            <button type="submit" class="btn btn-success">Lưu thông tin</button>
-        </form>
     </section>
 
     <section id="contact" class="section">
