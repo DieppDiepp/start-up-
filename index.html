@@ -14,7 +14,7 @@
             padding: 0;
         }
         header {
-            background: url('assets/images/header-bg.jpg') no-repeat center center/cover;
+            background: url('assets/images/background.png') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 100px 20px;
@@ -27,13 +27,20 @@
             font-size: 1.2rem;
             margin-bottom: 20px;
         }
-        .btn-primary {
+        .btn-primary, .btn-secondary {
             background-color: #006400;
             border: none;
             padding: 10px 20px;
             font-size: 1rem;
             border-radius: 5px;
             color: white;
+            margin: 5px;
+        }
+        .btn-secondary {
+            background-color: #004d00;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
+            background-color: #003300;
         }
         nav {
             background-color: #006400;
@@ -103,11 +110,13 @@
         <h1>Nông Gia</h1>
         <p>Chăm sóc cây trồng thông minh - Hiệu quả - Bền vững</p>
         <a href="#services" class="btn-primary">Khám phá dịch vụ</a>
+        <a href="second-page.html" class="btn-secondary">Tìm hiểu thêm về app</a>
     </header>
 
     <nav>
         <a href="#about">Về chúng tôi</a>
         <a href="#services">Dịch vụ</a>
+        <a href="#product-info">Thông tin cây trồng</a>
         <a href="#contact">Liên hệ</a>
     </nav>
 
@@ -137,10 +146,52 @@
         </div>
     </section>
 
+    <section id="product-info" class="section">
+        <h2 class="section-title">Thông tin cây trồng</h2>
+        <form>
+            <div class="mb-3">
+                <label for="plantType" class="form-label">Loại cây trồng</label>
+                <select id="plantType" class="form-select">
+                    <option selected>Chọn loại cây trồng</option>
+                    <option value="1">Cà phê</option>
+                    <option value="2">Lúa</option>
+                    <option value="3">Sầu riêng</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="plantYear" class="form-label">Năm trồng</label>
+                <select id="plantYear" class="form-select">
+                    <option selected>Chọn năm trồng</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Địa điểm</label>
+                <select id="location" class="form-select">
+                    <option selected>Chọn địa điểm</option>
+                    <option value="highlands">Tây Nguyên</option>
+                    <option value="north">Miền Bắc</option>
+                    <option value="south">Miền Nam</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="area" class="form-label">Diện tích canh tác</label>
+                <input type="text" id="area" class="form-control" placeholder="Nhập diện tích (ha)">
+            </div>
+            <div class="mb-3">
+                <label for="numberOfPlants" class="form-label">Số cây</label>
+                <input type="text" id="numberOfPlants" class="form-control" placeholder="Nhập số lượng cây">
+            </div>
+            <button type="submit" class="btn btn-success">Lưu thông tin</button>
+        </form>
+    </section>
+
     <section id="contact" class="section">
         <h2 class="section-title">Liên hệ với chúng tôi</h2>
         <p>Email: <a href="mailto:support@nonggia.com">support@nonggia.com</a></p>
-        <p>Hotline: 0123 456 789</p>
+        <p>Hotline: 0393958681</p>
     </section>
 
     <footer class="footer">
